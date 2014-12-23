@@ -1,0 +1,38 @@
+extends layout
+
+  
+block body
+  .container
+    .header
+      ul.nav.nav-pills.pull-right
+        if user
+          li
+            a(href='/notifications') Notifications
+          li
+            a(href='/logout') Logout
+        else
+          li
+            a(href='/register') Register
+  .login
+    .row
+      .col-lg-6.col-lg-offset-3
+        form.bs-example.form-horizontal(method='post', action='')
+          fieldset
+            legend Login
+            if error
+              .alert.alert-dismissable.alert-danger.login-fail
+                button.close(type='button', data-dismiss='alert') &times;
+                p.
+                  #{error}
+            .form-group
+              label.col-lg-4.control-label(for='username') Email
+              .col-lg-4
+                input#username.form-control(type='email', name='username', placeholder='Email', autofocus)
+            .form-group
+              label.col-lg-4.control-label(for='password') Password
+              .col-lg-4
+                input#password.form-control(type='password', name='password', placeholder='Password')
+            .form-group
+              .col-lg-10.col-lg-offset-4
+                button.btn.btn-primary(type='submit') Login
+            a(href='/forgot') Forgot your password?

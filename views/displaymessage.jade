@@ -1,0 +1,22 @@
+extends layout
+
+block body
+  .container
+    .header
+      ul.nav.nav-pills.pull-right
+          li
+            a(href='/logout') Logout
+      ul.nav.nav-pills.pull-left
+          li
+            a(href='/createpost') New
+      ul.nav.nav-pills.pull-center
+          li
+            a(href='/follow') Follow     
+  br
+  .subscribe 
+        .jumbotron
+          h1 Error!
+          br
+          br
+          div
+          p You have successfuly subscribed to this post!

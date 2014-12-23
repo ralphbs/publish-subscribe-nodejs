@@ -1,0 +1,54 @@
+extends layout
+
+block body
+  .container
+    .header
+      ul.nav.nav-pills.pull-right
+          li
+            a(href='/logout') Logout
+      ul.nav.nav-pills.pull-left
+          li
+            a(href='/createpost') New 
+      ul.nav.nav-pills.pull-center
+          li
+            a(href='/follow') Follow 
+      ul.nav.nav-pills.pull-left
+          li
+            a(href='/') Home     
+    if editfunctionality
+      ul.nav.nav-pills.pull-center    
+          li
+            a(href='/notifications') Edit  
+  br
+  .notifications 
+        .jumbotron
+          h1 Follow Notifications
+          br
+          br
+          div
+          ul#posts(data-role="listview")
+            - each post in posts
+              li(id=post._id, class="list-group-item list-group-item-success")
+                .btn(id=post._id, class="btn-list")
+                  p #{post.post.category} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp #{post.post.date} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp #{post.post.title}
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal')
+              span(aria-hidden='true') &times;
+              span.sr-only Close
+            |         
+            h4#myModalLabel.modal-title Confirmation
+          |       
+          .modal-body
+            | Are you sure you want to follow this post?
+          |       
+          .modal-footer
+          form(id="frm-sub")
+            button.btn.btn-default(id="btn-close" type='button', data-dismiss='modal') Close
+            |         
+            button.btn.btn-primary(type='button' id="btn-save") Follow          
+          br
+          br
+  script(src='js/main.js')

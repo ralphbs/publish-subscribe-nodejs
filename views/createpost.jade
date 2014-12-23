@@ -1,0 +1,42 @@
+extends layout
+
+block body
+  .container
+    .header
+      ul.nav.nav-pills.pull-right
+          li
+            a(href='/logout') Logout
+      ul.nav.nav-pills.pull-left
+          li
+            a(href='/') Home
+      ul.nav.nav-pills.pull-center
+          li
+            a(href='/follow') Follow
+  .createpost
+    .row
+      .col-lg-6.col-lg-offset-3
+        form.bs-example.form-horizontal(method='post', action='/save')
+          fieldset
+            legend Create a New Post
+            .form-group
+              label.col-lg-4.control-label(for='title') Title
+              .col-lg-4
+                input#title.form-control(name='title', type='string', placeholder='Subject', autofocus)
+            .form-group
+              label.col-lg-4.control-label(for='category') Category
+              .col-lg-4
+               select(name='category')
+                option(value="Java") Java Release
+                option(value="Node") Node Release
+                option(value="IDDE") Idde Release
+            .form-group
+              label.col-lg-4.control-label(for='datetime') Date
+              .col-lg-4
+                input#datetime.form-control(name='date', type='date', placeholder='Date')
+            .form-group
+              label.col-lg-4.control-label(for='description') Description
+              .col-lg-8
+                textarea#description.form-control(rows=4, name='description', type='string', placeholder='Content of your post')
+            .form-group
+              .col-lg-10.col-lg-offset-4
+                button.btn.btn-primary(type='submit') Create post

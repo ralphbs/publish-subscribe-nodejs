@@ -1,0 +1,52 @@
+extends layout
+
+block body
+  .container
+    .header
+      ul.nav.nav-pills.pull-right
+          li
+            a(href='/logout') Logout
+      ul.nav.nav-pills.pull-left
+          li
+            a(href='/createpost') New      
+  br
+  div.edit 
+    if owner
+    .row
+      .col-lg-6.col-lg-offset-3
+        form.bs-example.form-horizontal(method='post', action='/save/#{post._id}')
+          fieldset
+            legend Edit Post
+            .form-group
+              label.col-lg-4.control-label(for='title') Title
+              .col-lg-4
+                input#title.form-control(name='title', type='string', placeholder='Subject', autofocus, value='#{post.post.title}')
+            .form-group
+              label.col-lg-4.control-label(for='category') Category
+              .col-lg-4
+               select
+                option(value="Java") Java Release
+                option(value="Node") Node Release
+                option(value="IDDE") Idde Release
+            .form-group
+              label.col-lg-4.control-label(for='datetime') Date
+              .col-lg-4
+                input#datetime.form-control(name='date', type='date', placeholder='Date', value='#{post.post.date}') 
+            .form-group
+              label.col-lg-4.control-label(for='description') Description
+              .col-lg-8
+                textarea#description.form-control(rows=4, name='description', type='string', placeholder='Content of your post') #{post.post.description}
+            .form-group
+              .col-lg-10.col-lg-offset-4
+                button.btn.btn-primary(type='submit') Edit post
+    
+.row
+  .col-lg-6.col-lg-offset-3
+      form.bs-example.form-horizontal(method='post', action='/save/#{post._id}')
+          fieldset
+            legend Add Comment
+            .form-group
+              label.col-lg-4.control-label(for='comment') Comment
+              .col-lg-8
+                textarea#description.form-control(rows=4, name='comment', type='string', placeholder='Add comment here') 
+

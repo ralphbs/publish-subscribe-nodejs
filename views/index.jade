@@ -1,0 +1,19 @@
+extends layout
+
+block body
+
+  #welcome.jumbotron
+    h1 Welcome to IBM JTC Product Announcement Publish & Subscribe System
+    p.lead
+      <br/>
+      <br/>
+      if user
+        ul#obj
+         -each object in obj
+          li(class="list-group-item list-group-item-success") 
+                    p #{object.category} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp #{object.post.title} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp #{object.post.date} 
+      else
+        p.bigbutton
+          a.bigbutton.btn.btn-lg.btn-danger(href='/login', role='button')  Login
+        p.bigbutton
+          a.bigbutton.btn.btn-lg.btn-danger(href='/register', role='button') Register
